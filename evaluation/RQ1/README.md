@@ -1,0 +1,3 @@
+The extended dataset is in [CrossVul_dataset](./crossvul_dataset)
+
+After running the scripts in [simulation](./simulation/) to generate VulWeaver's raw results, execute [eval_results_test_set.py](./eval_results_test_set.py) to compute the final metrics, which are saved in [eval_results_test.json](./eval_results_test.json). To get the results of the whole dataset execute [eval_results_whole_set.py](./eval_results_whole_set.py) to compute the final metrics, which are saved in [eval_results_whole_set.json](./eval_results_whole_set.json).  

@@ -1,0 +1,16 @@
+
+
+import Rectangle from './Rectangle.js';
+
+
+var Union = function (rectA, rectB, out) {
+    if (out === undefined) { out = new Rectangle(); }
+    var x = Math.min(rectA.x, rectB.x);
+    var y = Math.min(rectA.y, rectB.y);
+    var w = Math.max(rectA.right, rectB.right) - x;
+    var h = Math.max(rectA.bottom, rectB.bottom) - y;
+
+    return out.setTo(x, y, w, h);
+};
+
+export default Union;

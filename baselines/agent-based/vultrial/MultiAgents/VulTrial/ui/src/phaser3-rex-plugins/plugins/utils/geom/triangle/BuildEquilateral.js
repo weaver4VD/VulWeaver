@@ -1,0 +1,21 @@
+
+
+import Triangle from './Triangle.js';
+
+
+var BuildEquilateral = function (x, y, length) {
+    var height = length * (Math.sqrt(3) / 2);
+
+    var x1 = x;
+    var y1 = y;
+
+    var x2 = x + (length / 2);
+    var y2 = y + height;
+
+    var x3 = x - (length / 2);
+    var y3 = y + height;
+
+    return new Triangle(x1, y1, x2, y2, x3, y3);
+};
+
+export default BuildEquilateral;

@@ -1,0 +1,11 @@
+var CONST = {
+    NO_NEWLINE: 0,
+    RAW_NEWLINE: 1,
+    WRAPPED_NEWLINE: 2,
+    NO_WRAP: 0,
+    WORD_WRAP: 1,
+    CHAR_WRAP: 2,
+    SPLITREGEXP: /(?:\r\n|\r|\n)/
+};
+
+export default CONST;

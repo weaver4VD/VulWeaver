@@ -1,0 +1,58 @@
+
+
+import LineToLine from './LineToLine.js';
+import Contains from '../rectangle/Contains';
+import ContainsArray from '../triangle/ContainsArray.js';
+import Decompose from '../rectangle/Decompose.js';
+
+
+var RectangleToTriangle = function (rect, triangle) {
+
+    if (
+        triangle.left > rect.right ||
+        triangle.right < rect.left ||
+        triangle.top > rect.bottom ||
+        triangle.bottom < rect.top) {
+        return false;
+    }
+
+    var triA = triangle.getLineA();
+    var triB = triangle.getLineB();
+    var triC = triangle.getLineC();
+
+    if (Contains(rect, triA.x1, triA.y1) || Contains(rect, triA.x2, triA.y2)) {
+        return true;
+    }
+
+    if (Contains(rect, triB.x1, triB.y1) || Contains(rect, triB.x2, triB.y2)) {
+        return true;
+    }
+
+    if (Contains(rect, triC.x1, triC.y1) || Contains(rect, triC.x2, triC.y2)) {
+        return true;
+    }
+
+    var rectA = rect.getLineA();
+    var rectB = rect.getLineB();
+    var rectC = rect.getLineC();
+    var rectD = rect.getLineD();
+
+    if (LineToLine(triA, rectA) || LineToLine(triA, rectB) || LineToLine(triA, rectC) || LineToLine(triA, rectD)) {
+        return true;
+    }
+
+    if (LineToLine(triB, rectA) || LineToLine(triB, rectB) || LineToLine(triB, rectC) || LineToLine(triB, rectD)) {
+        return true;
+    }
+
+    if (LineToLine(triC, rectA) || LineToLine(triC, rectB) || LineToLine(triC, rectC) || LineToLine(triC, rectD)) {
+        return true;
+    }
+
+    var points = Decompose(rect);
+    var within = ContainsArray(triangle, points, true);
+
+    return (within.length > 0);
+};
+
+export default RectangleToTriangle;

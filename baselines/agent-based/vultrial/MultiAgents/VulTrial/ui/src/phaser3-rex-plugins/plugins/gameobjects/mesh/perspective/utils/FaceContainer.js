@@ -1,0 +1,99 @@
+import Container from '../../../container/containerlite/ContainerLite.js';
+import ForEachFace from './ForEachFace.js';
+
+const RadToDeg = Phaser.Math.RadToDeg;
+const DegToRad = Phaser.Math.DegToRad;
+
+class FaceContainer extends Container {
+    constructor(scene, x, y, width, height, faces) {
+        super(scene, x, y, width, height);
+        this.faces = faces;
+
+        ForEachFace(faces, function (face) {
+            face.setPosition(x, y);
+            this.add(face);
+        }, this, true);
+    }
+    get rotationX() {
+        return 0;
+    }
+    set rotationX(value) {
+    }
+
+    get angleX() {
+        return RadToDeg(this.rotationX);
+    }
+
+    set angleX(value) {
+        this.rotationX = DegToRad(value);
+    }
+    get rotationY() {
+        return 0;
+    }
+    set rotationY(value) {
+    }
+
+    get angleY() {
+        return RadToDeg(this.rotationY);
+    }
+
+    set angleY(value) {
+        this.rotationY = DegToRad(value);
+    }
+    get rotationZ() {
+        return 0;
+    }
+    set rotationZ(value) {
+    }
+
+    get angleZ() {
+        return RadToDeg(this.rotationZ);
+    }
+
+    set angleZ(value) {
+        this.rotationZ = DegToRad(value);
+    }
+
+    setDebug(graphic, callback) {
+        ForEachFace(this.faces, function (face) {
+            face.setDebug(graphic, callback);
+        }, null, true);
+        return this;
+    }
+
+    panX(v) {
+        ForEachFace(this.faces, function (face) {
+            face.panX(v);
+        }, null, true);
+        return this;
+    }
+
+    panY(v) {
+        ForEachFace(this.faces, function (face) {
+            face.panY(v);
+        }, null, true);
+        return this;
+    }
+
+    panZ(v) {
+        ForEachFace(this.faces, function (face) {
+            face.panZ(v);
+        }, null, true);
+        return this;
+    }
+
+    transformVerts(x, y, z, rotateX, rotateY, rotateZ) {
+        ForEachFace(this.faces, function (face) {
+            face.transformVerts(x, y, z, rotateX, rotateY, rotateZ);
+        }, null, true);
+        return this;
+    }
+
+    forEachFace(callback, scope, ignoreInvalid) {
+        ForEachFace(this.faces, callback, scope, ignoreInvalid);
+        return this;
+    }
+
+}
+
+export default FaceContainer;

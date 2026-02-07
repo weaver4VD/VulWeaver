@@ -1,0 +1,23 @@
+
+
+import RectangleToTriangle from './RectangleToTriangle.js';
+import GetLineToRectangle from './GetLineToRectangle.js';
+
+
+var GetRectangleToTriangle = function (rect, triangle, out) {
+    if (out === undefined) { out = []; }
+
+    if (RectangleToTriangle(rect, triangle)) {
+        var lineA = triangle.getLineA();
+        var lineB = triangle.getLineB();
+        var lineC = triangle.getLineC();
+
+        GetLineToRectangle(lineA, rect, out);
+        GetLineToRectangle(lineB, rect, out);
+        GetLineToRectangle(lineC, rect, out);
+    }
+
+    return out;
+};
+
+export default GetRectangleToTriangle;

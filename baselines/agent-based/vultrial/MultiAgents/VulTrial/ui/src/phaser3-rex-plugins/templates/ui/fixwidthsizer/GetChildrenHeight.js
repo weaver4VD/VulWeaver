@@ -1,0 +1,8 @@
+var GetChildrenHeight = function () {
+    if (this.rexSizer.hidden) {
+        return 0;
+    }
+    return this.widthWrapResult.height + this.space.top + this.space.bottom;
+}
+
+export default GetChildrenHeight;

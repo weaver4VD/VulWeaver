@@ -1,0 +1,25 @@
+
+
+
+var SpliceOne = function (array, index)
+{
+    if (index >= array.length)
+    {
+        return;
+    }
+
+    var len = array.length - 1;
+
+    var item = array[index];
+
+    for (var i = index; i < len; i++)
+    {
+        array[i] = array[i + 1];
+    }
+
+    array.length = len;
+
+    return item;
+};
+
+export default SpliceOne;

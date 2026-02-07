@@ -1,0 +1,2 @@
+The primevul dataset is in [primevul google drive](https://drive.google.com/drive/folders/1cznxGme5o6A_9tT8T47JUh3MPEpRYiKK)
+First follow the instructions in [primevul_dataset/README.md](./primevul_dataset/README.md) to convert the PrimeVul raw data into VulWeaver-runnable format. After running the scripts in [simulation](./simulation/) to generate VulWeaver's raw results, execute [eval_results_test_set.py](./eval_results_test_set.py) to compute the final metrics, which are saved in [results.json](./results.json).

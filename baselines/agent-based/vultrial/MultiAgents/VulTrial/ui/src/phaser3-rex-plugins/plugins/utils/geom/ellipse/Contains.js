@@ -1,0 +1,19 @@
+
+
+
+var Contains = function (ellipse, x, y)
+{
+    if (ellipse.width <= 0 || ellipse.height <= 0)
+    {
+        return false;
+    }
+    var normx = ((x - ellipse.x) / ellipse.width);
+    var normy = ((y - ellipse.y) / ellipse.height);
+
+    normx *= normx;
+    normy *= normy;
+
+    return (normx + normy < 0.25);
+};
+
+export default Contains;
