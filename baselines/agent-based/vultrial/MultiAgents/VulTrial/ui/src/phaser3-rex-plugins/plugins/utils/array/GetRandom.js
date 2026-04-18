@@ -1,0 +1,14 @@
+
+
+
+var GetRandom = function (array, startIndex, length)
+{
+    if (startIndex === undefined) { startIndex = 0; }
+    if (length === undefined) { length = array.length; }
+
+    var randomIndex = startIndex + Math.floor(Math.random() * length);
+
+    return (array[randomIndex] === undefined) ? null : array[randomIndex];
+};
+
+export default GetRandom;

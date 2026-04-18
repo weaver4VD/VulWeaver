@@ -1,0 +1,32 @@
+
+
+import Rectangle from '../rectangle/Rectangle.js';
+
+
+var GetAABB = function (polygon, out) {
+    if (out === undefined) { out = new Rectangle(); }
+
+    var minX = Infinity;
+    var minY = Infinity;
+    var maxX = -minX;
+    var maxY = -minY;
+    var p;
+
+    for (var i = 0; i < polygon.points.length; i++) {
+        p = polygon.points[i];
+
+        minX = Math.min(minX, p.x);
+        minY = Math.min(minY, p.y);
+        maxX = Math.max(maxX, p.x);
+        maxY = Math.max(maxY, p.y);
+    }
+
+    out.x = minX;
+    out.y = minY;
+    out.width = maxX - minX;
+    out.height = maxY - minY;
+
+    return out;
+};
+
+export default GetAABB;

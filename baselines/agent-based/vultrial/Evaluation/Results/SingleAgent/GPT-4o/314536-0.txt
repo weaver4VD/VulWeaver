@@ -1,0 +1,40 @@
+To analyze the code for a potential security vulnerability, we'll go through the code step-by-step:
+
+1. **Function Overview:**
+   - The function `print_media_desc` is intended to format media description information from an `sdp_media` structure into a buffer.
+
+2. **Buffer Management:**
+   - The buffer `buf` is used to store the formatted media description, and `end` marks the end of this buffer (`buf + len`).
+   - The pointer `p` tracks the current position for writing in the buffer.
+
+3. **Initial Check:**
+   - The code checks if the buffer size `len` is sufficient to fit the initial "m=" line and associated parts.
+   - If `len` is insufficient, it immediately returns `-1`, indicating an error, thus preventing a buffer overflow at this point.
+
+4. **String Copy Operations:**
+   - `pj_memcpy` is used to copy segments of data from the media description into the buffer.
+   - The operations involve copying components like `media`, `port`, `transport`, and formats.
+   - Each copy operation checks for buffer space beforehand, except the initial check, which encompasses only the space for "m=", `media`, `transport`, and ports.
+
+5. **Format Loop:**
+   - The loop iterates through formats (`fmt`), checking if enough space remains in the buffer for each format. 
+   - If insufficient space is found, the function returns `-1`.
+
+6. **String Termination:**
+   - After writing parts of the media description, the code appends `"\r\n"` to terminate the string if space is available.
+
+7. **Connection Info, Bandwidth, and Attributes:**
+   - Each element (connection info, bandwidth, attributes) is printed by respective functions (`print_connection_info`, `print_bandw`, and `print_attr`).
+   - In each case, it's checked whether the length returned by these functions exceeds available buffer space.
+
+8. **Overall Buffer Boundary Checks:**
+   - Throughout the function, there are consistent checks to ensure that no writes occur outside the buffer's boundary before performing copy operations.
+   - The function uses proper checks and operations to ensure buffer space is not exceeded, and all uses of `pj_memcpy` are protected by length checks.
+
+9. **Return Value:**
+   - If the function executes without encountering a space issue, it returns the number of characters written.
+
+Considering this detailed analysis, the function implements necessary checks to prevent writes beyond the buffer's boundaries, addressing possible causes of buffer overflow. All dynamic writes to `buf` are preceded by sufficient length validation.
+
+EXPLICITLY, my analysis concludes: 
+(2) NO: No security vulnerability.

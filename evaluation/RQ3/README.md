@@ -1,0 +1,2 @@
+The results of parameter sensitivity evaluation is in [results](./parameter_sensitivity.pdf).
+As shown in the figure, VulWeaver achieves its best performance at $\mathcal{N} = 3$. Further increasing $\mathcal{N}$ results in only minor performance improvements but a substantial rise in token usage. Thus, $\mathcal{N} = 3$ provides the optimal balance between effectiveness and efficiency.

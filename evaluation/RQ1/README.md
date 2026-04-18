@@ -1,0 +1,3 @@
+The PrimeVul4J dataset is in [primevul4j_dataset](./primevul4j_dataset/)
+
+After running the scripts in [simulation](./simulation/) to generate VulWeaver's raw results, execute [eval_results_test_set.py](./eval_results_test_set.py) to compute the final metrics, which are saved in [eval_results_primevul4j_test.json](./eval_results_primevul4j_test.json). To get the results of the whole dataset execute [eval_results_whole_set.py](./eval_results_whole_set.py) to compute the final metrics, which are saved in [eval_results_primevul4j.json](./eval_results_primevul4j.json).

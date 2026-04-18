@@ -1,0 +1,1 @@
+After running the scripts in [simulation](./simulation/) to generate VulWeaver's raw results, execute [eval_results_test_set.py](./eval_results_test_set.py) to compute the final metrics, which are saved in [results.json](./results.json).

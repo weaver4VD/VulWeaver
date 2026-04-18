@@ -1,0 +1,1 @@
+The final resutls of VulRAG is in [results.json](./results.json)
